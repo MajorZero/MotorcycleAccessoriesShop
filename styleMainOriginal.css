@@ -1,0 +1,693 @@
+/*CSS*/
+
+
+    /*---General settings---*/
+
+body {
+    margin:0;
+    padding:0;
+    font: 'Lucida Sans Unicode', sans-serif ;
+}
+
+
+    /*---General elements---*/
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*anchor class allows navigation inside the home page with
+fixed header not overlapping the content*/
+.anchor{
+    display: block;
+    position: relative;
+    top: -20vh;
+    visibility: hidden;    
+}
+
+
+
+
+    /*---Cool header with menu buttons always on top---*/
+
+
+header {
+    color: white;  
+    font: bold 2.5vh 'Lucida Sans Unicode', sans-serif ;
+    background: linear-gradient(180deg, #c90000 90%, #770000);
+    height: 9vh; /* this value must be the same as .subMenu top position */
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    margin-bottom: 0px;
+    z-index: 999;
+    
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+#logoOut{
+    background: linear-gradient(180deg, #c90000 40%, #770000);
+    height: 16.5vh;
+    width: 22.5vh;
+    border-radius: 50%;
+    overflow: visible;
+    flex: 0 1 auto;
+    order: 3;
+}
+
+#logoIn{
+    background-color: #c90000;
+    height: 16vh;
+    width: 22vh;
+    border-radius: 50%;
+    /*margin: auto;*/
+    overflow: visible;
+    text-align: center;
+}
+
+#logoIn img{
+    height: 15vh;
+    width: 20vh;
+    margin-top: 3vh;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+#logoIn img:hover{
+    /*opacity: 0.8;*/
+    -webkit-animation: blurFadeIn 0.5s ease-in backwards;
+}
+
+.menuIteam{
+    height: 3vh;
+    width: 20vh;
+    border-radius: 8px;
+    border: solid 1px white;
+    flex: 0 1 auto;
+    align-self: auto;
+    text-align: center;
+    padding: 8px;
+}
+
+.menuIteam:hover{
+    box-shadow: 3px 3px 3px #700;
+    -webkit-animation: blurFadeIn 0.5s ease-in backwards;
+}
+
+
+/* Order of the elements in the header */
+
+.menuButton{order: 1;}
+.shopButton{order: 2;}
+.loginButton{order: 4;}
+.cartButton{order: 5;}
+
+#menuIcon, #cartIcon{
+    width: 2.5vh;
+    height: 2.5vh;
+}
+
+
+
+    /*---Appearing/disappearing submenu nav bar---*/
+
+
+#subMenu{
+    background: linear-gradient(180deg, #c90000 90%, #770000);
+    border-radius: 0px 0px 8px 8px;
+    font-size: 2.5vh; 
+    position: fixed;
+    top: 9vh; /* this value must be the same as header height */
+    margin-top: 0px;
+    padding: 20px;
+    list-style: none;
+    opacity: 0.85;
+    display: none;
+}
+
+#subMenu li{
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#subMenu li:last-child{
+    border-bottom: none;
+}
+
+#subLogin{
+    background: linear-gradient(180deg, #c90000 90%, #770000);
+    border-radius: 0px 0px 8px 8px;
+    font-size: 2.5vh; 
+    position: fixed;
+    top: 9vh; /* this value must be the same as header height */
+    margin-top: 0px;
+    padding: 20px;
+    list-style: none;
+    opacity: 0.85;
+    display: none;
+}
+
+#subLogin li{
+    text-align: left;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+#subLogin input[type=text]{
+    float: right;
+}
+
+#subLogin li:last-child{
+    text-align: center;
+    font-size: 2vh;
+    border-bottom: none;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]#showMenu, input[type=checkbox]#showLogin{
+    display: none;
+}
+
+/*Show sub-menu when invisible checkbox is checked*/
+input[type=checkbox]#showMenu:checked~#subMenu{
+    display: block;
+}
+
+/*Show sub-login when invisible checkbox is checked*/
+input[type=checkbox]#showLogin:checked~#subLogin{
+    display: block;
+}
+
+
+    /*---Slide show---*/
+
+#slide{
+    width: 100%;
+    height: 91vh;
+    margin-top: 9vh;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#slide img{
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+    overflow: visible;
+    z-index: 0;
+}
+
+img#leftArrow{
+    z-index: 1;
+    width: 15vh;
+    height: 5vh;
+    position: absolute;
+    top: 50%;
+    margin-left: 5%;
+    opacity: 0.5;
+    transform: rotate(90deg);
+}
+
+img#rightArrow{
+    z-index: 1;
+    width: 15vh;
+    height: 5vh;
+    position: absolute;
+    top: 50%;
+    margin-left: 90%;
+    opacity: 0.5;
+    transform: rotate(-90deg);
+}
+
+img#navArrow{
+    z-index: 1;
+    width: 15vh;
+    height: 5vh;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    opacity: 0.5;
+    margin-left: -7.5vh;
+}
+
+#leftArrow:hover, #rightArrow:hover, #navArrow:hover {
+    opacity: 1;
+}
+
+#imgRoll{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#imgRoll.fadeOut{
+    opacity: 0;
+}
+
+.alternativeImg{
+    position: absolute;
+    top: 9vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+}
+
+    /*---Content---*/
+
+
+.text, .map {
+    color: black;
+    font: 1em 'Lucida Sans Unicode', sans-serif ;
+    background-color: white;
+    padding-left: 25% auto;
+    padding-right: 25% auto;
+    text-align: center;
+    margin-bottom: 4vh;
+    margin-top: 4vh;
+    
+}
+
+.contactTimetableContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 4vh;
+    margin-top: 4vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.contact{
+    padding: 0;
+    flex: 1 1 auto;
+    order: 1;
+    align-self: auto;
+}
+
+.timetable{
+    padding: 0;
+    flex: 1 1 auto;
+    order: 2;
+    align-self: auto;
+}
+
+.timetable table{
+    text-align: center;
+    margin: 0 auto;
+    width: 30vh;
+    border-collapse:collapse;
+}
+
+.timetable table tr{
+    border-bottom: 1px solid black;
+}
+
+.timetable table tr:last-child{
+    border-bottom: none;
+}
+
+
+
+    /*---Parallax sections---*/
+
+
+.parallax {
+    width: 100%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.back1{background-image: url(../images/circuit1.jpg);}
+.back2{background-image: url(../images/circuit2.jpg);}
+.back3{background-image: url(../images/circuit4.jpg);}
+
+.productImage{
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    flex: 0 1 auto;
+    margin-left: 3%;
+}
+
+.productImage:hover{
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.productImage img{
+    opacity: 1;
+    height: 200px;
+    width: 200px;
+}
+
+.productCategory{
+    color: white;
+    flex: 0 1 auto;
+    width: 30%;
+    text-align: left;
+}
+
+.productCategory h2{
+    font: bold 10vh 'Lucida Sans Unicode', sans-serif ;
+}
+
+.productImage:hover ~ .productCategory{
+    -webkit-animation: blurFadeInOut 3s ease-in 0s infinite backwards;
+}
+
+
+.productSum{
+    flex: 0 1 auto;
+    margin-right: 3%;
+    width: 30%;
+}
+
+.productSum h1{
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.8;
+    color: #c90000;
+    font: 2em 'Lucida Sans Unicode', sans-serif ;
+}
+
+.productSum table{
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.8;
+}
+
+.productSum table td{
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    overflow: visible;
+    text-align: center;
+}
+.productSum table td:hover{
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-animation: blurFadeIn 0.5s ease-in backwards;
+}
+
+.productSum table td:hover > input[type=image]{
+    width: 95%;
+    height: 95%;
+}
+
+.productSum input[type=image]{
+    width: 80%;
+    height: 80%;  
+}
+
+
+
+    /*---Footer style---*/
+footer{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    background-color: rgba(201, 0, 0, 0.4);
+    margin-top: 6vh;
+}
+
+#foot {
+    font: 1.5vh 'Lucida Sans Unicode', sans-serif ;
+    float: right;
+    width: 50vh;
+    color: white;
+    background: linear-gradient(180deg, #770000, #c90000 20%);
+    border-radius: 3vh 0 0 3vh;
+    text-align: right;
+    padding-right: 25%;
+    padding-bottom: 0px;
+    padding-top: 0px;    
+}
+
+
+
+
+
+
+
+
+/*Text Fade Animation*/
+
+@-webkit-keyframes blurFadeInOut{
+	0%{
+		opacity: 0;
+		text-shadow: 0px 0px 40px #fff;
+		-webkit-transform: scale(1.3);
+	}
+	33%,66%{
+		opacity: 1;
+		text-shadow: 0px 0px 1px #fff;
+		-webkit-transform: scale(1);
+	}
+	100%{
+		opacity: 0;
+		text-shadow: 0px 0px 40px #fff;
+		-webkit-transform: scale(1.3);
+	}
+}
+
+@-webkit-keyframes blurFadeIn{
+	0%{
+		opacity: 0.5;
+		text-shadow: 0px 0px 40px #fff;
+	}
+	100%{
+		opacity: 1;
+		text-shadow: 0px 0px 1px #fff;
+	}
+}
+
+@-webkit-keyframes statik{
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+
+
+
+
+
+
+
+
+    /*Tablet responsive layout*/
+
+@media screen 
+and (min-width: 480px) 
+and (max-width: 1024px) {
+    
+    header{
+        position: absolute;
+    }
+    
+    #logoOut{
+        margin-left: -12vh;
+        order: 1;
+    }
+    
+    .menuButton{order: 2;}
+    .shopButton{order: 3;}
+    .loginButton{order: 4;}
+    .cartButton{order: 5;}
+    
+    #leftArrow, #rightArrow{
+        display: none;
+    }
+    
+    .contactTimetableContainer{
+        flex-flow: column wrap;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .contact{
+        order: 1;
+    }
+    
+    .timetable{
+        order: 2;
+    }
+    
+    .timetable table{
+        width: auto;
+    }
+    
+    .parallax {
+        flex-flow: column;
+        align-items: center;
+    }
+    
+    .productImage{
+        display: none;
+    }
+    
+    .productCategory{
+        width: auto;
+        margin-right: 1%;
+    }
+    
+    .productSum{
+        margin-bottom: 10px;
+    }
+    
+    .text{
+        margin: 0;
+        padding: 0;
+    }
+    
+    .map{
+        display: none;
+    }
+    
+    footer{
+    }
+}
+
+
+
+
+
+    /*Smartphone responsive layout*/
+
+
+@media screen and (max-width: 480px) {
+    header{
+        /*position: static;*/
+        background: #c90000;
+        height: 23vh; /* this must be the starting position for the submenues */
+        flex-flow: row wrap;
+        overflow: visible;
+    }
+        
+    #logoOut{
+        height: auto;
+        border-radius: 0px;
+        width: 100%;
+        order: 5;
+    }
+    
+    #logoIn{
+        height: auto;
+        border-radius: 0px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .menuButton{order: 1;}
+    .shopButton{order: 2;}
+    .loginButton{order: 3;}
+    .cartButton{order: 4;}
+    
+    .menuIteam{
+        border: solid 1px black;
+        text-align: center;
+        display: inline;
+        width: 40%;
+    }
+    
+    .menuIteam:hover{
+        box-shadow: none;
+    }
+    
+    #logoIn img{
+        height: 7vh;
+        width: 12vh;
+        margin-top: 1vh;
+    }
+
+    #logoIn img:hover{
+        opacity: 1;
+    }
+    
+    #subMenu, #subLogin
+    {
+        top: 23vh;
+    }
+    
+    #leftArrow, #rightArrow, #navArrow{
+        display: none;
+    }
+    
+    .contactTimetableContainer{
+        flex-flow: column wrap;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .contact{
+        order: 1;
+    }
+    
+    .timetable{
+        order: 2;
+    }
+    
+    .timetable table{
+        width: auto;
+    }
+    
+    .parallax {
+        width: 100%;
+        flex-flow: column;
+        align-items: center;
+    }
+    
+    .productImage{
+        display: none;
+    }
+    
+    .productCategory{
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    
+    .productSum{
+        margin: auto;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .productSum table{
+        margin: auto;
+    }
+    
+    .text{
+        margin: 0;
+        padding: 0;
+    }
+    
+    .map{
+        display: none;
+    }
+    
+    footer{
+    }
+}
+
+
